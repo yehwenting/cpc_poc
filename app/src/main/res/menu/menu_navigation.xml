@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/navItemOne"
+            android:icon="@drawable/file"
+            android:title="PM工單回報管理" />
+        <item android:id="@+id/navItemTwo"
+            android:title="庫房領退料管理"
+            android:icon="@drawable/file"
+            />
+
+        <item android:id="@+id/navItemEight"
+            android:title="倉庫盤點計畫"
+            android:icon="@drawable/file"
+            />
+        <item android:id="@+id/navItemFive"
+            android:title="登出系統"
+            android:icon="@drawable/file"
+            />
+
+    </group>
+</menu>

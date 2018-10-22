@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="myandroidhello.com.tsmc_android.Mainpage.SearchActivity">
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@color/nav_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            >
+
+            <SearchView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="進階查詢"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:textSize="24dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="您可以選擇手動、語音輸入或是掃描二維條碼 "
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"/>
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:background="@drawable/background_edittext"
+                android:ems="10"
+                android:hint="輸入資產編號"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"/>
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_edittext"
+                android:ems="10"
+                android:hint="輸入工單編號"
+                android:inputType="textPersonName"
+                android:textAlignment="center"
+
+                />
+
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_edittext"
+                android:ems="10"
+                android:hint="輸入預防保養說明"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText6"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_edittext"
+                android:ems="10"
+                android:hint=""
+                android:inputType="date"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText7"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_edittext"
+                android:ems="10"
+                android:hint="選擇工單執行期限"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/editText8"
+                android:layout_width="250dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/background_edittext"
+                android:ems="10"
+                android:hint="輸入回報保養工程師"
+                android:inputType="textPersonName"
+                android:textAlignment="center" />
+
+            <LinearLayout
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="20dp">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:text="清除"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/button_shape_orange"/>
+
+                <Button
+                    android:id="@+id/searchBtn"
+                    android:layout_width="120dp"
+                    android:layout_height="35dp"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/button_shape_orange"
+                    android:text="查詢"
+                    android:textColor="@android:color/white" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+</android.support.constraint.ConstraintLayout>

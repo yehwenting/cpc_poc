@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView36"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="選取事故類別"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:stretchColumns="1,2">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/tableGray"
+            android:padding="8dp">
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+
+                 />
+            <TextView
+                android:text="大類"/>
+            <TextView
+                android:text="細項"/>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+            <CheckBox
+                android:id="@+id/injury1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                />
+            <TextView
+                android:text="職業災害"/>
+
+            <TextView android:text="1.企業員工死亡事故或3人以上受傷" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+            <CheckBox
+                android:id="@+id/injury2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                />
+            <TextView
+                android:text="職業災害"/>
+
+            <TextView android:text="2.企業員工受傷送外就醫需住院治療" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <CheckBox
+                android:id="@+id/injury3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                />
+            <TextView
+                android:text="職業災害"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:text="3.企業員工除交通事故外之工作上造成受傷或請公傷假" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp">
+            <CheckBox
+                android:id="@+id/injury4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                />
+            <TextView
+                android:text="職業災害"/>
+
+            <TextView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:text="4.企業員工除交通事故造成職業傷害需就醫或請公傷假" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+            <CheckBox
+                android:id="@+id/accident1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                />
+
+            <TextView android:text="意外事故" />
+
+            <TextView android:text="1.發生火災有出動消防車或爆炸事故" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="8dp">
+            <CheckBox
+                android:id="@+id/accident2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                />
+            <TextView
+                android:text="意外事故"/>
+
+            <TextView android:text="2.其他發生火災事故" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>
