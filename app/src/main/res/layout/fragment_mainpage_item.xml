@@ -25,7 +25,7 @@
 
             <RelativeLayout
                 android:layout_width="380dp"
-                android:layout_height="280dp"
+                android:layout_height="220dp"
                 android:background="@android:color/white">
                 <!--android:background="@drawable/background_group"-->
 
@@ -81,58 +81,6 @@
 
                     </TableRow>
 
-                    <TableRow>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginStart="15dp"
-                            android:layout_span="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView340"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="提報人"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:id="@+id/reporter"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="MFCHANGG張X峰"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="5dp"
-                            android:layout_span="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:id="@+id/textView34"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginBottom="5dp"
-                                android:text="事故部門"
-                                android:textSize="14sp" />
-
-                            <TextView
-                                android:id="@+id/department"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="台北廠成品課"
-                                android:textColor="@android:color/black"
-                                android:textSize="16sp" />
-                        </LinearLayout>
-                    </TableRow>
 
                     <TableRow>
 
@@ -223,21 +171,22 @@
                             android:orientation="vertical">
 
                             <TextView
-                                android:id="@+id/texVie"
+                                android:id="@+id/textView34"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="5dp"
-                                android:text="處理人"
+                                android:text="事故部門"
                                 android:textSize="14sp" />
 
                             <TextView
-                                android:id="@+id/handle"
+                                android:id="@+id/department"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="吳大才"
+                                android:text="台北廠成品課"
                                 android:textColor="@android:color/black"
                                 android:textSize="16sp" />
                         </LinearLayout>
+
                     </TableRow>
                 </TableLayout>
 

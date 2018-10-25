@@ -6,7 +6,6 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -14,8 +13,6 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 
-import com.example.wentingy.cpcmaximopoc.AccidentActivity.AccidentActivity;
-import com.example.wentingy.cpcmaximopoc.Mainpage.MainActivity;
 import com.example.wentingy.cpcmaximopoc.R;
 
 import org.json.JSONException;
@@ -139,10 +136,10 @@ public class AccidentCategoryFragment extends DialogFragment {
     private void initDate(){
         detail = new JSONObject();
         try {
-            detail.put("injury1", "職業災害:1.企業員工死亡事故或3人以上\n受傷");
-            detail.put("injury2", "職業災害:2.企業員工受傷送外就醫需住院\n治療");
-            detail.put("injury3", "職業災害:3.企業員工除交通事故外之工作\n上造成受傷或請公傷假");
-            detail.put("injury4", "職業災害:4.企業員工除交通事故造成職業\n傷害需就醫或請公傷假");
+            detail.put("injury1", "職業災害:1.死亡事故或3人以上受傷");
+            detail.put("injury2", "職業災害:2.受傷就醫需住院治療");
+            detail.put("injury3", "職業災害:3.交通事故外造成受傷或請\n公傷假");
+            detail.put("injury4", "職業災害:4.交通事故造成職業傷害需就醫\n或請公傷假");
             detail.put("accident1", "意外事故:1.發生火災有出動消防車或\n爆炸事故");
             detail.put("accident2", "意外事故:2.其他發生火災事故");
 

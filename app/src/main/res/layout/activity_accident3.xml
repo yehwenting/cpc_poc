@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
         android:layout_marginTop="18dp"
-        android:text="儲存"
+        android:text="提報"
         android:textColor="@color/colorPrimary"
         app:layout_constraintEnd_toEndOf="@+id/toolbar"
         app:layout_constraintTop_toTopOf="parent" />
@@ -62,151 +62,12 @@
             <TableRow>
 
                 <TextView
-
-                    android:padding="10dip"
-                    android:text="事故部門" />
-
-                <RelativeLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_column="1">
-
-                    <TextView
-                        android:id="@+id/className"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="氣化二課" />
-
-                    <Button
-                        android:layout_width="50dp"
-                        android:layout_height="23dp"
-                        android:layout_marginStart="10dp"
-                        android:layout_toEndOf="@+id/className"
-                        android:background="@drawable/button_shape_gray"
-                        android:text="選擇"
-                        android:textColor="@android:color/white"
-                        android:textSize="14sp" />
-
-                </RelativeLayout>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dip"
-                    android:text="機密別 " />
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/classified"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="機密" />
-
-                    <RadioButton
-                        android:id="@+id/unclassified"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="非機密" />
-
-                </RadioGroup>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:padding="10dip"
-                    android:text="發生時間" />
-
-                <TextView
-                    android:id="@+id/datetext"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/background_edittext1_1"
-                    android:padding="5dp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:padding="10dip"
-                    android:text="提報人" />
-
-                <TextView android:text="Y_FUYI吳大才" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:padding="10dip"
-                    android:text="速報案號" />
-
-                <TextView android:text="" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="10dip"
-                    android:text="異常造成歸屬 " />
-
-                <RadioGroup
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
-
-                    <RadioButton
-                        android:id="@+id/CPC"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="true"
-                        android:text="本企業" />
-
-                    <RadioButton
-                        android:id="@+id/contractor"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:checked="false"
-                        android:text="承攬商" />
-
-                </RadioGroup>
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
-                    android:padding="10dip"
-                    android:text="發生地點" />
-
-                <EditText
-                    android:layout_margin="5dp"
-                    android:background="@drawable/background_edittext1_1"
-                    android:padding="10dp"
-                    android:text="煉製一廠驟冷蒸餾爐區"
-                    android:textSize="14sp" />
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
                     android:layout_span="2"
                     android:background="#ffecdd"
                     android:padding="10dip"
-                    android:text="事故類別"
+                    android:text="事故狀況"
                     android:textAlignment="center"
                     android:textColor="@android:color/black" />
-
             </TableRow>
 
             <TableRow>
@@ -251,13 +112,157 @@
             <TableRow>
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:padding="10dip"
+                    android:text="發生經過說明" />
+
+                <EditText
+                    android:layout_height="70dp"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/background_edittext1_1"
+                    android:textSize="14sp"
+                    android:inputType="textMultiLine"
+                    />
+            </TableRow>
+
+
+
+            <!--<TableRow>-->
+
+                <!--<TextView-->
+
+                    <!--android:padding="10dip"-->
+                    <!--android:text="事故部門" />-->
+
+                <!--<RelativeLayout-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_column="1">-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/className"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:text="氣化二課" />-->
+
+                    <!--<Button-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="23dp"-->
+                        <!--android:layout_marginStart="10dp"-->
+                        <!--android:layout_toEndOf="@+id/className"-->
+                        <!--android:background="@drawable/button_shape_gray"-->
+                        <!--android:text="選擇"-->
+                        <!--android:textColor="@android:color/white"-->
+                        <!--android:textSize="14sp" />-->
+
+                <!--</RelativeLayout>-->
+            <!--</TableRow>-->
+
+            <!--<TableRow>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="10dip"-->
+                    <!--android:text="機密別 " />-->
+
+                <!--<RadioGroup-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/classified"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:checked="true"-->
+                        <!--android:text="機密" />-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/unclassified"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:checked="false"-->
+                        <!--android:text="非機密" />-->
+
+                <!--</RadioGroup>-->
+            <!--</TableRow>-->
+
+            <TableRow>
+
+                <TextView
+                    android:padding="10dip"
+                    android:text="發生時間" />
+
+                <TextView
+                    android:id="@+id/datetext"
+                    android:layout_margin="5dp"
+                    android:background="@drawable/background_edittext1_1"
+                    android:padding="5dp" />
+            </TableRow>
+
+            <!--<TableRow>-->
+
+                <!--<TextView-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="10dip"-->
+                    <!--android:text="異常造成歸屬 " />-->
+
+                <!--<RadioGroup-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:orientation="horizontal">-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/CPC"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:checked="true"-->
+                        <!--android:text="本企業" />-->
+
+                    <!--<RadioButton-->
+                        <!--android:id="@+id/contractor"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:checked="false"-->
+                        <!--android:text="承攬商" />-->
+
+                <!--</RadioGroup>-->
+            <!--</TableRow>-->
+
+            <TableRow>
+
+                <TextView
+                    android:padding="10dip"
+                    android:text="發生地點" />
+
+                <EditText
+                    android:layout_margin="5dp"
+                    android:background="@drawable/background_edittext1_1"
+                    android:padding="10dp"
+                    android:text="煉製一廠驟冷蒸餾爐區"
+                    android:textSize="14sp" />
+            </TableRow>
+
+            <TableRow>
+
+                <TextView
                     android:layout_span="2"
                     android:background="#ffecdd"
                     android:padding="10dip"
-                    android:text="事故狀況"
+                    android:text="事故類別"
                     android:textAlignment="center"
                     android:textColor="@android:color/black" />
+
             </TableRow>
+
+
+
 
             <TableRow>
 
@@ -266,7 +271,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="3dp"
                     android:padding="10dip"
-                    android:text="員工" />
+                    android:text="傷亡人數" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -338,82 +343,6 @@
             <TableRow>
 
                 <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:padding="10dip"
-                    android:text="非員工" />
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:orientation="vertical">
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="10dp">
-
-                        <TextView
-                            android:id="@+id/tv3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:text="死亡" />
-
-                        <EditText
-                            android:id="@+id/dead1"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/tv3"
-                            android:background="@drawable/background_edittext1_1"
-                            android:inputType="phone"
-                            android:textAlignment="center" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:layout_toEndOf="@+id/dead1"
-                            android:text="人" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:id="@+id/tv4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:text="受傷" />
-
-                        <EditText
-                            android:id="@+id/wounded1"
-                            android:layout_width="60dp"
-                            android:layout_height="wrap_content"
-                            android:layout_toEndOf="@+id/tv4"
-                            android:background="@drawable/background_edittext1_1"
-                            android:inputType="phone"
-                            android:textAlignment="center" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="3dp"
-                            android:layout_toEndOf="@+id/wounded1"
-                            android:text="人" />
-                    </RelativeLayout>
-
-                </LinearLayout>
-
-            </TableRow>
-
-            <TableRow>
-
-                <TextView
                     android:padding="10dip"
                     android:text="設施或設備財物\n損失金額概估" />
 
@@ -460,33 +389,8 @@
 
             <TableRow>
 
-                <TextView
-                    android:layout_span="2"
-                    android:background="#ffecdd"
-                    android:padding="10dip"
-                    android:text="速報發生經過"
-                    android:textAlignment="center"
-                    android:textColor="@android:color/black" />
-
             </TableRow>
 
-            <TableRow>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="3dp"
-                    android:padding="10dip"
-                    android:text="說明" />
-
-                <EditText
-                    android:layout_height="70dp"
-                    android:layout_margin="5dp"
-                    android:background="@drawable/background_edittext1_1"
-                    android:textSize="14sp"
-                    android:inputType="textMultiLine"
-                    />
-            </TableRow>
 
             <TableRow>
 
@@ -540,7 +444,7 @@
                     android:layout_span="2"
                     android:src="@drawable/image" />
             </TableRow>
-            <TableRow android:layout_marginBottom="60dp">
+            <TableRow android:layout_marginBottom="20dp" >
 
                 <Button
                     android:id="@+id/BtnSelectImg"
@@ -555,6 +459,23 @@
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
             </TableRow>
+
+            <TableRow android:layout_marginBottom="60dp">
+
+                <Button
+                    android:id="@+id/BtnSentImg"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="40dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_span="2"
+                    android:background="@drawable/button_shape_orange"
+                    android:text="提報"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp" />
+            </TableRow>
+
 
         </TableLayout>
 

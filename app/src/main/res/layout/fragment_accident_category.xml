@@ -51,7 +51,7 @@
             <TextView
                 android:text="職業災害"/>
 
-            <TextView android:text="1.企業員工死亡事故或3人以上受傷" />
+            <TextView android:text="1.死亡事故或3人以上受傷" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"
@@ -66,7 +66,7 @@
             <TextView
                 android:text="職業災害"/>
 
-            <TextView android:text="2.企業員工受傷送外就醫需住院治療" />
+            <TextView android:text="2.受傷就醫需住院治療" />
         </TableRow>
 
         <TableRow
@@ -84,8 +84,8 @@
 
             <TextView
                 android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:text="3.企業員工除交通事故外之工作上造成受傷或請公傷假" />
+                android:layout_height="wrap_content"
+                android:text="3.交通事故外造成受傷或請公傷假" />
         </TableRow>
 
         <TableRow
@@ -104,7 +104,7 @@
             <TextView
                 android:layout_width="50dp"
                 android:layout_height="40dp"
-                android:text="4.企業員工除交通事故造成職業傷害需就醫或請公傷假" />
+                android:text="4.交通事故外造成職業傷害需就醫或請公傷假" />
         </TableRow>
         <TableRow
             android:layout_width="match_parent"

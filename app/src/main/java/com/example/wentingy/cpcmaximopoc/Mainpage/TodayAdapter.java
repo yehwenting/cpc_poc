@@ -4,13 +4,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.wentingy.cpcmaximopoc.AccidentActivity.AccidentActivity;
@@ -97,12 +95,12 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHol
 
             accidnetId = itemView.findViewById(R.id.accidentId);
             description = itemView.findViewById(R.id.condition);
-            reporter = itemView.findViewById(R.id.reporter);
+//            reporter = itemView.findViewById(R.id.reporter);
             department = itemView.findViewById(R.id.department);
             location = itemView.findViewById(R.id.place);
             time = itemView.findViewById(R.id.time);
             category = itemView.findViewById(R.id.catagory);
-            handle = itemView.findViewById(R.id.handle);
+//            handle = itemView.findViewById(R.id.handle);
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.example.wentingy.cpcmaximopoc.Mainpage;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -10,7 +9,6 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -19,11 +17,9 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.example.wentingy.cpcmaximopoc.AccidentActivity.AccidentActivity;
 import com.example.wentingy.cpcmaximopoc.Data.MySingleTon;
 import com.example.wentingy.cpcmaximopoc.Model.AccidentList;
 import com.example.wentingy.cpcmaximopoc.Model.WorkOrder;
-import com.example.wentingy.cpcmaximopoc.Model.WorkOrderChild;
 import com.example.wentingy.cpcmaximopoc.Navigation_BaseActivity;
 import com.example.wentingy.cpcmaximopoc.R;
 
@@ -130,10 +126,10 @@ public class MainActivity extends Navigation_BaseActivity {
 
     }
     private void initView(){
-        search=findViewById(R.id.searchDetail);
+//        search=findViewById(R.id.searchDetail);
         mTabs =findViewById(R.id.tabs);
-        mTabs.addTab(mTabs.newTab().setText("未結案"));
-        mTabs.addTab(mTabs.newTab().setText("本日結案"));
+        mTabs.addTab(mTabs.newTab().setText("已通報之事故案件"));
+//        mTabs.addTab(mTabs.newTab().setText("本日結案"));
         recyclerView=findViewById(R.id.main_rv);
 //        recyclerView.setNestedScrollingEnabled(false);
         TodayAdapter todayAdapter = new TodayAdapter(accidentLists);
@@ -143,13 +139,13 @@ public class MainActivity extends Navigation_BaseActivity {
 
     }
     private void initListener(){
-        search.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,SearchActivity.class);
-                startActivity(intent);
-            }
-        });
+//        search.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent=new Intent(MainActivity.this,SearchActivity.class);
+//                startActivity(intent);
+//            }
+//        });
 
         mTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
