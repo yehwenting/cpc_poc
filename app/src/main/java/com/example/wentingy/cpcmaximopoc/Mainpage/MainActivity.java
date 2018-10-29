@@ -1,6 +1,7 @@
 package com.example.wentingy.cpcmaximopoc.Mainpage;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -17,11 +20,16 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.wentingy.cpcmaximopoc.AccidentActivity.AccidentActivity;
 import com.example.wentingy.cpcmaximopoc.Data.MySingleTon;
 import com.example.wentingy.cpcmaximopoc.Model.AccidentList;
 import com.example.wentingy.cpcmaximopoc.Model.WorkOrder;
 import com.example.wentingy.cpcmaximopoc.Navigation_BaseActivity;
 import com.example.wentingy.cpcmaximopoc.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,10 +39,11 @@ import java.util.Map;
 
 public class MainActivity extends Navigation_BaseActivity {
 
-    private TextView toolBar_title,search;
+    private TextView toolBar_title,search,num;
 //    private ImageView search;
     private android.support.design.widget.TabLayout mTabs;
     private ViewPager mViewPager;
+    private Button report;
     List<WorkOrder> workOrderList = new ArrayList<>();
     List<AccidentList> accidentLists = new ArrayList<>();
     RecyclerView recyclerView;
@@ -56,7 +65,7 @@ public class MainActivity extends Navigation_BaseActivity {
         toolBar_title=findViewById(R.id.toolbar_title);
         //toolbar
         toolbar.setTitle("");//設置ToolBar Title
-        toolBar_title.setText("意外事故(異常)速報表");
+        toolBar_title.setText("事件速報");
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem = 0;
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態
@@ -70,14 +79,53 @@ public class MainActivity extends Navigation_BaseActivity {
 
     private void initData(){
 
+        String url="http://nickall.asuscomm.com:9080/maximo/oslc/os/zz_accidentrep?lean=1&&oslc.select=*";
 
         if(checkNetworkConnection()) {
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://nickall.asuscomm.com:9080/maximo/oslc/os/ZZ_ACCIDENTREP?lean=1&oslc.select=*",
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
 
                             Log.d("uuuuu", response);
+                            try {
+                                JSONObject jObject = new JSONObject(response);
+                                JSONArray member = jObject.getJSONArray("member");
+
+                                for (int i=0; i<member.length(); i++) {
+                                    num.setText("共"+member.length()+"筆");
+                                    JSONObject accident = member.getJSONObject(i);
+                                    if(accident.has("accidentid") && accident.has("description") &&
+                                            accident.has("location") && accident.has("createdate")
+                                            ){
+                                        String id= accident.getString("accidentid");
+                                        String description = accident.getString("description");
+                                        String location = accident.getString("location");
+                                        String time = accident.getString("createdate");
+//                                        String type = accident.getString("type");
+//                                        String department = accident.getString("dept");
+
+
+                                        AccidentList accidentList = new AccidentList(id,"no","3","2",location,
+                                                "吳大才",time,"傷亡","1","通報緊急應變中心","yes",
+                                                "2700802",description,"20012","null","0","0","汽化一課");
+                                        accidentLists.add(accidentList);
+                                    }else {
+                                        continue;
+                                    }
+
+                                }
+
+
+
+                                TodayAdapter todayAdapter = new TodayAdapter(accidentLists);
+                                //要記得有layoutmanager
+                                recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,1));
+                                recyclerView.setAdapter(todayAdapter);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
 
 
                         }
@@ -110,19 +158,19 @@ public class MainActivity extends Navigation_BaseActivity {
 
 
         //fake data
-        for (int i=0;i<4;i++){
-//            List<WorkOrderChild> workOrderChildren=new ArrayList<>();
-//            if(i%2==0){
-//                WorkOrderChild workOrderChild=new WorkOrderChild("F15-ASSET100","MAXADAMO","已回報","hello");
-//                workOrderChildren.add(workOrderChild);
-//            }
-//            WorkOrder workOrder=new WorkOrder("ACC1070000003","Y_TILSMJ","待回報","detail",workOrderChildren);
-//            workOrderList.add(workOrder);
-            AccidentList accidentList = new AccidentList("AC107000002","no","3","2","CDU單元",
-                    "吳大才","2018-10-22 10:10:09","意外事故:氣爆","1","通報緊急應變中心","yes",
-                    "2700802","氣爆事件","20012","null","0","0","機械二課");
-            accidentLists.add(accidentList);
-        }
+//        for (int i=0;i<4;i++){
+////            List<WorkOrderChild> workOrderChildren=new ArrayList<>();
+////            if(i%2==0){
+////                WorkOrderChild workOrderChild=new WorkOrderChild("F15-ASSET100","MAXADAMO","已回報","hello");
+////                workOrderChildren.add(workOrderChild);
+////            }
+////            WorkOrder workOrder=new WorkOrder("ACC1070000003","Y_TILSMJ","待回報","detail",workOrderChildren);
+////            workOrderList.add(workOrder);
+//            AccidentList accidentList = new AccidentList("AC107011112","no","3","2","CDU單元",
+//                    "吳大才","2018-10-22 10:10:09","意外事故:氣爆","1","通報緊急應變中心","yes",
+//                    "2700802","氣爆事件","20012","null","0","0","機械二課");
+//            accidentLists.add(accidentList);
+//        }
 
     }
     private void initView(){
@@ -131,11 +179,8 @@ public class MainActivity extends Navigation_BaseActivity {
         mTabs.addTab(mTabs.newTab().setText("已通報之事故案件"));
 //        mTabs.addTab(mTabs.newTab().setText("本日結案"));
         recyclerView=findViewById(R.id.main_rv);
-//        recyclerView.setNestedScrollingEnabled(false);
-        TodayAdapter todayAdapter = new TodayAdapter(accidentLists);
-        //要記得有layoutmanager
-        recyclerView.setLayoutManager(new GridLayoutManager(MainActivity.this,1));
-        recyclerView.setAdapter(todayAdapter);
+        report=findViewById(R.id.report);
+        num=findViewById(R.id.num);
 
     }
     private void initListener(){
@@ -146,6 +191,19 @@ public class MainActivity extends Navigation_BaseActivity {
 //                startActivity(intent);
 //            }
 //        });
+        report.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AccidentList accidentList = new AccidentList("","","","","",
+                        "","","","","","",
+                        "","","","","","","");
+                Intent intent=new Intent(MainActivity.this,AccidentActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("accidentList ", accidentList);
+                intent.putExtras(bundle);
+                startActivity(intent);
+            }
+        });
 
         mTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

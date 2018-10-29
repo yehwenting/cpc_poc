@@ -1,6 +1,8 @@
 package com.example.wentingy.cpcmaximopoc.Model;
 
-public class AccidentList {
+import java.io.Serializable;
+
+public class AccidentList implements Serializable {
     private String accidentId;
     private String insurance;
     private String nonempinjured;

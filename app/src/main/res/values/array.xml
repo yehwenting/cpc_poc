@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="accident">
+        <item>火災</item>
+        <item>爆炸</item>
+        <item>車禍</item>
+        <item>虛驚</item>
+        <item>缺失</item>
+        <item>故障</item>
+    </array>
+    <array name="location">
+        <item>煉製一廠</item>
+        <item>煉製二廠</item>
+        <item>煉製三廠</item>
+        <item>煉製四廠</item>
+    </array>
+</resources>

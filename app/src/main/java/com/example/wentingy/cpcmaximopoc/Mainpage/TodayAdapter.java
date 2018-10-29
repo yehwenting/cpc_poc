@@ -2,6 +2,7 @@ package com.example.wentingy.cpcmaximopoc.Mainpage;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -16,6 +17,7 @@ import com.example.wentingy.cpcmaximopoc.Model.AccidentList;
 import com.example.wentingy.cpcmaximopoc.Model.WorkOrder;
 import com.example.wentingy.cpcmaximopoc.R;
 
+import java.io.Serializable;
 import java.util.List;
 
 
@@ -23,7 +25,7 @@ import java.util.List;
  * Created by Yehwenting on 2018/7/30.
  */
 
-public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHolder>{
+public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHolder> {
 
     private List<WorkOrder> workOrders;
     private List<AccidentList> accidentLists;
@@ -52,7 +54,11 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHol
         final AccidentList accidentList=accidentLists.get(position);
 
         holder.accidnetId.setText(accidentList.getAccidentId());
-        holder.department.setText(accidentList.getDept());
+//        holder.department.setText(accidentList.getDept());
+//        holder.category.setText(accidentList.getType());
+        holder.description.setText(accidentList.getDescription());
+        holder.time.setText(accidentList.getCreatedate());
+        holder.location.setText(accidentList.getLocation());
 
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
@@ -60,6 +66,9 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHol
             public void onClick(View view) {
 
                 Intent intent=new Intent(context, AccidentActivity.class);
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("accidentList ", accidentList);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }
@@ -81,7 +90,7 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHol
 
     public class TodayViewHolder extends RecyclerView.ViewHolder {
 
-        TextView accidnetId,description,reporter,department,location,time,category,handle;
+        TextView accidnetId,description,reporter,location,time,handle;
         RecyclerView recyclerView;
         CardView cardView;
 
@@ -96,10 +105,8 @@ public class TodayAdapter extends RecyclerView.Adapter<TodayAdapter.TodayViewHol
             accidnetId = itemView.findViewById(R.id.accidentId);
             description = itemView.findViewById(R.id.condition);
 //            reporter = itemView.findViewById(R.id.reporter);
-            department = itemView.findViewById(R.id.department);
             location = itemView.findViewById(R.id.place);
             time = itemView.findViewById(R.id.time);
-            category = itemView.findViewById(R.id.catagory);
 //            handle = itemView.findViewById(R.id.handle);
         }
     }
