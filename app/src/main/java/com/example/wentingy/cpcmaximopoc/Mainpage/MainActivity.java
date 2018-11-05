@@ -43,7 +43,7 @@ public class MainActivity extends Navigation_BaseActivity {
 //    private ImageView search;
     private android.support.design.widget.TabLayout mTabs;
     private ViewPager mViewPager;
-    private Button report;
+    private TextView report;
     List<WorkOrder> workOrderList = new ArrayList<>();
     List<AccidentList> accidentLists = new ArrayList<>();
     RecyclerView recyclerView;
@@ -65,7 +65,7 @@ public class MainActivity extends Navigation_BaseActivity {
         toolBar_title=findViewById(R.id.toolbar_title);
         //toolbar
         toolbar.setTitle("");//設置ToolBar Title
-        toolBar_title.setText("事件速報");
+//        toolBar_title.setText("事件速報");
         setUpToolBar();//使用父類別的setUpToolBar()，設置ToolBar
         CurrentMenuItem = 0;
         NV.getMenu().getItem(CurrentMenuItem).setChecked(true);//設置Navigation目前項目被選取狀態

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">tsmc_android</string>
+    <string name="app_name">cpc_poc</string>
     <string name="open_navigation">hi</string>
     <string name="close_navigation">bye</string>
     <string name="title_activity_main2">Main2Activity</string>

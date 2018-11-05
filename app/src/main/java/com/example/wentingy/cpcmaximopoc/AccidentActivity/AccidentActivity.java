@@ -57,17 +57,19 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
 
     private static final int CAMERA_PIC_REQUEST = 22;
     private static final int PICK_IMAGE_REQUEST = 1;
+    public static final int RESULT_GALLERY = 0;
+
 
     Uri cameraUri;
 
-    private ImageView back;
+//    private ImageView back;
     private Button BtnSelectImage,BtnSentImg,BtnOpenImg;
     private ImageView ImgPhoto;
     private String Camerapath ;
     public TextView accident_category,description,remedy,reported;
-    private TextView dateText;
+    private TextView dateText,timetext;
     private Spinner accidentType,location;
-    private String level,time;
+    private String level,time,date;
 
     @Override
     public void sendInput(String input) {
@@ -84,7 +86,7 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
     }
 
     private void initView(){
-        back=findViewById(R.id.back);
+//        back=findViewById(R.id.back);
         ImgPhoto = findViewById(R.id.ImgPhoto);
         BtnSelectImage = findViewById(R.id.BtnSelectImg);
         BtnOpenImg = findViewById(R.id.BtnOpenImg);
@@ -93,6 +95,7 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
 //        accident_category = findViewById(R.id.accident_category);
 //        description=findViewById(R.id.description);
         dateText = findViewById(R.id.datetext);
+        timetext = findViewById(R.id.timetext);
 //        dead = findViewById(R.id.dead);
 //        wounded = findViewById(R.id.wounded);
         remedy = findViewById(R.id.remedy);
@@ -116,17 +119,38 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
     }
     private void initDate(){
         level="LL";
-        time="2018-10-29T13:19:00";
+        time="13:19:00";
+        final Calendar c = Calendar.getInstance();
+        int mYear = c.get(Calendar.YEAR);
+        int mMonth = c.get(Calendar.MONTH);
+        int mDay = c.get(Calendar.DAY_OF_MONTH);
+        String month;
+        String day;
+        if(mMonth<10){
+            month="0"+mMonth+1;
+        }else{
+            month=String.valueOf(mMonth+1);
+        }
+        if(mDay<10){
+            day="0"+mDay;
+        }else{
+            day=String.valueOf(mDay);
+        }
+        date=String.valueOf(mYear) + "-"
+                + month + "-"
+                + day;
+        dateText.setText(date);
+
 
     }
     private void initListerer(){
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent=new Intent(AccidentActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
+//        back.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent=new Intent(AccidentActivity.this, MainActivity.class);
+//                startActivity(intent);
+//            }
+//        });
         BtnSelectImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -142,6 +166,12 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
         BtnOpenImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+
+//                Intent galleryIntent = new Intent(
+//                        Intent.ACTION_PICK,
+//                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//                startActivityForResult(galleryIntent , RESULT_GALLERY );
                 try {
                     Intent intent = new Intent();
 // Show only images, no videos or anything else
@@ -154,12 +184,7 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
                 }
             }
         });
-//        accident_categoryBtn.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                showLoginDialog(v);
-//            }
-//        });
+
         BtnSentImg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -175,9 +200,21 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
         });
         dateText.setOnClickListener(new View.OnClickListener() {
             private String setDateFormat(int year,int monthOfYear,int dayOfMonth){
+                String monthOfYearT;
+                String dayOfMonthT;
+                if(monthOfYear<10){
+                    monthOfYearT="0"+monthOfYear+1;
+                }else{
+                    monthOfYearT=String.valueOf(monthOfYear+1);
+                }
+                if(dayOfMonth<10){
+                    dayOfMonthT="0"+dayOfMonth;
+                }else {
+                    dayOfMonthT=String.valueOf(dayOfMonth);
+                }
                 return String.valueOf(year) + "-"
-                        + String.valueOf(monthOfYear + 1) + "-"
-                        + String.valueOf(dayOfMonth);
+                        + monthOfYearT + "-"
+                        + dayOfMonthT;
             }
             @Override
             public void onClick(View v) {
@@ -190,28 +227,8 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
                     @Override
                     public void onDateSet(DatePicker view, int year, int month, int day) {
                         final String format = setDateFormat(year,month,day);
-//                        dateText.setText(format);
-
-                        final Calendar c = Calendar.getInstance();
-                        int date = c.get(Calendar.DATE);
-                        int hour = c.get(Calendar.HOUR_OF_DAY);
-                        int minute = c.get(Calendar.MINUTE);
-                        // Create a new instance of TimePickerDialog and return it
-                        new TimePickerDialog(AccidentActivity.this, new TimePickerDialog.OnTimeSetListener(){
-
-                            @Override
-                            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                                if(minute<10){
-                                    String minute1="0"+minute;
-                                    dateText.setText(format+" "+hourOfDay + ":" + minute1+":00");
-                                    time=format+"T"+hourOfDay + ":" + minute1+":00";
-                                }else{
-                                    dateText.setText(format+" "+hourOfDay + ":" + minute+":00");
-                                    time=format+"T"+hourOfDay + ":" + minute+":00";
-                                }
-
-                            }
-                        }, hour, minute, false).show();
+                        dateText.setText(format);
+                        date=format;
 
                     }
 
@@ -219,6 +236,35 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
             }
 
         });
+
+        timetext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final Calendar c = Calendar.getInstance();
+                int date = c.get(Calendar.DATE);
+                int hour = c.get(Calendar.HOUR_OF_DAY);
+                int minute = c.get(Calendar.MINUTE);
+                // Create a new instance of TimePickerDialog and return it
+                new TimePickerDialog(AccidentActivity.this, new TimePickerDialog.OnTimeSetListener(){
+
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        if(minute<10){
+                            String minute1="0"+minute;
+                            timetext.setText(hourOfDay + ":" + minute1+":00");
+                            time=hourOfDay + ":" + minute1+":00";
+                        }else{
+                            timetext.setText(hourOfDay + ":" + minute+":00");
+                            time=hourOfDay + ":" + minute+":00";
+                        }
+
+                    }
+                }, hour, minute, false).show();
+
+            }
+        });
+
 
     }
 
@@ -279,6 +325,13 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
                         }
                     }
                     break;
+//                case QuestionEntryView.RESULT_GALLERY :
+//                    if (null != data) {
+//                        imageUri = data.getData();
+//                        //Do whatever that you desire here. or leave this blank
+//
+//                    }
+//                    break;
                 default:
                     break;
             }
@@ -290,39 +343,81 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
         if(checkNetworkConnection()) {
 
 
-            Map<String, String> map = new HashMap<String, String>();
+            final Map<String, String> map = new HashMap<String, String>();
             final int min = 100000000;
             final int max = 999999999;
             final String random = Integer.toString(new Random().nextInt((max - min) + 1));
             final String id = "AC" + random;
             map.put("accidentid", id);
-            map.put("createdate", time);
+            map.put("createdate", date+"T"+time);
             map.put("description", accidentType.getSelectedItem().toString());
             map.put("location", location.getSelectedItem().toString());
             map.put("remdy", remedy.getText().toString());
             map.put("insurance_description", level);
 
 
-            JSONObject jsonObject = new JSONObject(map);
+            final JSONObject jsonObject = new JSONObject(map);
 
             JsonRequest<JSONObject> jsonRequest = new JsonObjectRequest(Request.Method.POST,"http://nickall.asuscomm.com:9080/maximo/oslc/os/ZZ_ACCIDENTREP?lean=1", jsonObject,
                     new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
                             Log.d("sss", "response -> " + response.toString());
-//                            Log.d("sss", "response -> " + id);
-                            AlertDialog.Builder adb = new AlertDialog.Builder(AccidentActivity.this)
-                                    .setTitle("儲存成功")
-                                    .setMessage("儲存成功，回主畫面！！")
-                                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+
+                            try {
+                                String zz_accidentid=response.getString("zz_accidentid");
+                                Log.d("sss",zz_accidentid);
+                                map.put("zz_accidentid",zz_accidentid);
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                            final JSONObject jsonObjectReport = new JSONObject(map);
+                            Log.d("sss", "responsessss -> " + jsonObjectReport.toString());
+
+
+                            JsonRequest<JSONObject> jsonRequestNode = new JsonObjectRequest(Request.Method.POST,"http://nickall.asuscomm.com:1880/cpcapi", jsonObjectReport,
+                                    new Response.Listener<JSONObject>() {
                                         @Override
-                                        public void onClick(DialogInterface dialogInterface, int i) {
-                                            Intent intent= new Intent(AccidentActivity.this,MainActivity.class);
-                                            startActivity(intent);
+                                        public void onResponse(JSONObject response) {
+                                            Log.d("sss", "responseNode -> " + response.toString());
+                                            Log.d("sss", "response -> " + id);
+                                            AlertDialog.Builder adb = new AlertDialog.Builder(AccidentActivity.this)
+                                                    .setTitle("儲存成功")
+                                                    .setMessage("儲存成功，回主畫面！！")
+                                                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
+                                                        @Override
+                                                        public void onClick(DialogInterface dialogInterface, int i) {
+                                                            Intent intent= new Intent(AccidentActivity.this,MainActivity.class);
+                                                            startActivity(intent);
+                                                        }
+                                                    });
+                                            AlertDialog alertDialog = adb.create();
+                                            alertDialog.show();
+
                                         }
-                                    });
-                            AlertDialog alertDialog = adb.create();
-                            alertDialog.show();
+                                    }, new Response.ErrorListener() {
+                                @Override
+                                public void onErrorResponse(VolleyError error) {
+                                    Log.e("sss", error.getMessage(), error);
+                                }
+                            })
+                            {
+                                @Override
+                                public Map<String, String> getHeaders() {
+                                    HashMap<String, String> headers = new HashMap<String, String>();
+                                    headers.put("Accept", "application/json");
+                                    headers.put("Content-Type", "application/json;charset=UTF-8");
+                                    return headers;
+                                }
+                            };
+
+                            jsonRequestNode.setRetryPolicy(new DefaultRetryPolicy(
+                                    10000,
+                                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+                            MySingleTon.getmInstance(AccidentActivity.this).addToRequestque(jsonRequestNode);
+
+
 
                         }
                     }, new Response.ErrorListener() {
@@ -351,47 +446,7 @@ public class AccidentActivity extends AppCompatActivity implements AccidentCateg
 //            Volley.newRequestQueue(this).add(jsonRequest);
 
 
-            JsonRequest<JSONObject> jsonRequestNode = new JsonObjectRequest(Request.Method.POST,"https://node-red-vera.mybluemix.net/cpcapi", jsonObject,
-                    new Response.Listener<JSONObject>() {
-                        @Override
-                        public void onResponse(JSONObject response) {
-                            Log.d("sss", "responseNode -> " + response.toString());
-//                            Log.d("sss", "response -> " + id);
-//                            AlertDialog.Builder adb = new AlertDialog.Builder(AccidentActivity.this)
-//                                    .setTitle("儲存成功")
-//                                    .setMessage("儲存成功，回主畫面！！")
-//                                    .setPositiveButton("確定", new DialogInterface.OnClickListener() {
-//                                        @Override
-//                                        public void onClick(DialogInterface dialogInterface, int i) {
-//                                            Intent intent= new Intent(AccidentActivity.this,MainActivity.class);
-//                                            startActivity(intent);
-//                                        }
-//                                    });
-//                            AlertDialog alertDialog = adb.create();
-//                            alertDialog.show();
 
-                        }
-                    }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    Log.e("sss", error.getMessage(), error);
-                }
-            })
-            {
-                @Override
-                public Map<String, String> getHeaders() {
-                    HashMap<String, String> headers = new HashMap<String, String>();
-                    headers.put("Accept", "application/json");
-                    headers.put("Content-Type", "application/json;charset=UTF-8");
-                    return headers;
-                }
-            };
-
-            jsonRequestNode.setRetryPolicy(new DefaultRetryPolicy(
-                    10000,
-                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-            MySingleTon.getmInstance(this).addToRequestque(jsonRequestNode);
 
     }else{
             Log.d("error","connect error");
